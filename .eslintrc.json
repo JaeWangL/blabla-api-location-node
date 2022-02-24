@@ -53,6 +53,7 @@
     ],
     "@typescript-eslint/no-explicit-any": "off",
     "@typescript-eslint/no-non-null-assertion": "off",
-    "@typescript-eslint/no-shadow": "error"
+    "@typescript-eslint/no-shadow": "error",
+    "@typescript-eslint/return-await": "off"
   }
 }

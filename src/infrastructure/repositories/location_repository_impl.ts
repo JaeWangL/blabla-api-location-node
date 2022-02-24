@@ -20,25 +20,4 @@ export class LocationRepositoryImpl implements LocationRepository {
 
     return this.entityMapper.fromEntity(newEntity);
   }
-
-  async findByIdAsync(id: string): Promise<Location | undefined> {
-    const entity = await this.prisma.locations.findUnique({
-      where: {
-        id,
-      },
-    });
-
-    return this.entityMapper.fromEntity(entity);
-  }
-
-  async findByDeviceTypeAndDeviceIdAsync(deviceType: 1 | 2, deviceId: string): Promise<Location | undefined> {
-    const entity = await this.prisma.locations.findFirst({
-      where: {
-        device_type: deviceType,
-        device_id: deviceId,
-      },
-    });
-
-    return this.entityMapper.fromEntity(entity);
-  }
 }

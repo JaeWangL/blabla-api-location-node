@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
+import { Locations as LocationEntity } from '@prisma/client';
 import { Location } from '@domain/aggregateModel/location';
-import { LocationCreatedDTO } from '../dtos';
+import { LocationCreatedDTO, LocationDetailDTO } from '../dtos';
 
 @Injectable()
 export class LocationDTOMapper {
@@ -12,6 +13,18 @@ export class LocationDTOMapper {
       deviceId: properties.device.deviceId,
       latitude: properties.position.latitude,
       longitude: properties.position.longitude,
+    };
+  }
+
+  toQueryDetailDTO(entity: LocationEntity): LocationDetailDTO {
+    return {
+      id: entity.id,
+      deviceType: entity.device_type as 1 | 2,
+      deviceId: entity.device_id,
+      // @ts-ignore NOTE: There are no solution to converting number to Prisma.Decimal
+      latitude: entity.latitude,
+      // @ts-ignore NOTE: There are no solution to converting number to Prisma.Decimal
+      longitude: entity.longitude,
     };
   }
 }
