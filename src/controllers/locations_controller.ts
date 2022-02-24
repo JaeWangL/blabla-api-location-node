@@ -29,7 +29,7 @@ export class LocationsController {
     @Param('type') type: '1' | '2',
     @Param('id') id: string,
   ): Promise<LocationDetailDTO> {
-    // TODO: Support dynamic `type`
-    return await this.queryBus.execute(new LocationByDeviceTypeAndDeviceIdQuery(1, id));
+    // @ts-ignore NOTE: for converting `string union` to `numeric union`
+    return await this.queryBus.execute(new LocationByDeviceTypeAndDeviceIdQuery(+type, id));
   }
 }
