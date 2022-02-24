@@ -12,16 +12,12 @@
   "plugins": ["@typescript-eslint", "jest", "prettier"],
   "extends": [
     "airbnb-base",
+    "airbnb-typescript/base",
     "plugin:import/typescript",
     "plugin:@typescript-eslint/recommended",
     "plugin:jest/recommended",
     "prettier"
   ],
-  "settings": {
-    "import/resolver": {
-      "typescript": {}
-    }
-  },
   "rules": {
     "prettier/prettier": "error",
     "class-methods-use-this": "off",
